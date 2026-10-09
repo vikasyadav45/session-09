@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikas Yadav | Portfolio & Quiz</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;line-height:1.6;background:#f5f7fb;color:#1f2937;transition:.3s}
+.navbar{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:18px 7%;background:#111827;color:#fff}
+.logo{font-size:24px;font-weight:700}
+.nav-links{display:flex;list-style:none;gap:20px;flex-wrap:wrap}
+.nav-links a{color:#fff;text-decoration:none}
+.nav-links a:hover{color:#60a5fa}
+.theme-toggle{position:fixed;right:20px;top:18px;z-index:2000;border:0;border-radius:25px;padding:10px 15px;background:#fff;color:#111827;cursor:pointer;font-weight:700;box-shadow:0 4px 15px #0003}
+.hero{min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:linear-gradient(135deg,#111827,#1e3a8a);color:#fff}
+.hero h1{font-size:60px;margin:10px}.hero h2{font-size:30px}.hero p{font-size:18px}
+.btn{display:inline-block;margin:25px 6px 0;padding:12px 24px;border-radius:7px;background:#fff;color:#1e3a8a;text-decoration:none;font-weight:700}
+.section{max-width:1100px;margin:auto;padding:75px 25px}
+.section-title{text-align:center;font-size:36px;margin-bottom:40px}
+.section-title:after{content:"";display:block;width:60px;height:4px;background:#2563eb;margin:10px auto}
+.about{text-align:center;max-width:850px;margin:auto;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px}
+.card,.project,.education{background:#fff;padding:28px;border-radius:12px;box-shadow:0 5px 20px #00000012;transition:.3s}
+.card:hover,.project:hover,.education:hover{transform:translateY(-6px)}
+.card h3,.project h3,.education h3{color:#2563eb;margin-bottom:10px}
+
+.quiz-wrap{max-width:900px;margin:auto}
+.quiz-intro{text-align:center;margin-bottom:25px}
+.quiz-card{background:#fff;border-radius:14px;padding:30px;box-shadow:0 8px 25px #00000012}
+.progress{font-weight:700;color:#2563eb;margin-bottom:18px}
+.question{font-size:23px;font-weight:700;margin-bottom:22px}
+.options{display:grid;gap:12px}
+.option{width:100%;text-align:left;border:2px solid #dbe3ef;background:#fff;padding:15px;border-radius:9px;cursor:pointer;font-size:16px;transition:.2s}
+.option:hover{border-color:#2563eb;background:#eff6ff}
+.option.selected{border-color:#2563eb;background:#dbeafe}
+.option.correct{border-color:#16a34a;background:#dcfce7}
+.option.wrong{border-color:#dc2626;background:#fee2e2}
+.quiz-controls{display:flex;justify-content:space-between;gap:12px;margin-top:25px}
+.quiz-btn{border:0;border-radius:8px;padding:12px 20px;background:#2563eb;color:#fff;font-weight:700;cursor:pointer}
+.quiz-btn:disabled{opacity:.5;cursor:not-allowed}
+.quiz-note{text-align:center;margin-top:15px;color:#64748b;font-size:14px}
+.result{display:none;text-align:center;padding:30px}
+.result h3{font-size:30px;color:#2563eb;margin-bottom:10px}
+.restart{margin-top:20px}
+
+footer{text-align:center;padding:25px;background:#111827;color:#fff}
+
+body.dark-mode{background:#050816;color:#e5e7eb}
+body.dark-mode .section-title{color:#f9fafb}
+body.dark-mode .card,body.dark-mode .project,body.dark-mode .education,body.dark-mode .quiz-card{background:#111827;color:#e5e7eb;box-shadow:0 8px 25px #0008}
+body.dark-mode .option{background:#0f172a;color:#e5e7eb;border-color:#334155}
+body.dark-mode .option:hover{background:#172554;border-color:#60a5fa}
+body.dark-mode .option.selected{background:#1e3a8a;border-color:#60a5fa}
+body.dark-mode .option.correct{background:#14532d;border-color:#22c55e}
+body.dark-mode .option.wrong{background:#7f1d1d;border-color:#ef4444}
+body.dark-mode .quiz-note{color:#94a3b8}
+body.dark-mode .theme-toggle{background:#111827;color:#fff}
+
+@media(max-width:768px){
+.navbar{padding:16px 5%;padding-right:90px;flex-direction:column;gap:12px}
+.hero h1{font-size:42px}.hero h2{font-size:24px}
+.section{padding:55px 18px}
+.question{font-size:20px}
+.theme-toggle{right:12px;top:12px}
+}
+</style>
+</head>
+
+<body>
+
+<button id="themeToggle" class="theme-toggle">🌙 Dark</button>
+
+<nav class="navbar">
+  <div class="logo">Vikas Yadav</div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<section id="home" class="hero">
+  <div>
+    <p>Hello, I'm</p>
+    <h1>Vikas Yadav</h1>
+    <h2>B.Tech CSE Student</h2>
+    <p>Aspiring Software Developer | Web Development Enthusiast | Future Data Analyst</p>
+    <a class="btn" href="#quiz">Take My Quiz</a>
+    <a class="btn" href="#projects">View Projects</a>
+  </div>
+</section>
+
+<section id="about" class="section">
+  <h2 class="section-title">About Me</h2>
+  <div class="about">
+    <p>I am Vikas Yadav, a B.Tech Computer Science and Engineering student at JECRC University, Jaipur.</p>
+    <p>I am interested in software development, web development, programming, and data analysis. I enjoy learning new technologies and building useful projects.</p>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <h2 class="section-title">Skills</h2>
+  <div class="grid">
+    <div class="card"><h3>HTML & CSS</h3><p>Responsive website development.</p></div>
+    <div class="card"><h3>JavaScript</h3><p>Interactive web applications.</p></div>
+    <div class="card"><h3>C / C++</h3><p>Programming fundamentals.</p></div>
+    <div class="card"><h3>Python</h3><p>Programming and data analysis.</p></div>
+    <div class="card"><h3>DSA</h3><p>Problem solving and algorithms.</p></div>
+    <div class="card"><h3>Git & GitHub</h3><p>Version control and project sharing.</p></div>
+  </div>
+</section>
+
+<section id="projects" class="section">
+  <h2 class="section-title">Projects</h2>
+  <div class="grid">
+    <div class="project"><h3>Personal Portfolio Website</h3><p>Responsive portfolio using HTML, CSS and JavaScript.</p></div>
+    <div class="project"><h3>Wheat Disease Detection</h3><p>AI/ML concept using image recognition to identify wheat diseases.</p></div>
+    <div class="project"><h3>AI in Education Blog</h3><p>Explores how AI can transform learning and student productivity.</p></div>
+  </div>
+</section>
+
+<section id="quiz" class="section">
+  <h2 class="section-title">Coding & AI Quiz</h2>
+  <div class="quiz-wrap">
+    <p class="quiz-intro">Five fixed questions • Four options each • Score is shown only after all five questions.</p>
+
+    <div id="quizCard" class="quiz-card">
+      <div id="progress" class="progress"></div>
+      <div id="question" class="question"></div>
+      <div id="options" class="options"></div>
+      <div class="quiz-controls">
+        <button id="prevBtn" class="quiz-btn">Previous</button>
+        <button id="nextBtn" class="quiz-btn">Next</button>
+      </div>
+      <p class="quiz-note">Choose one answer for each question. Selecting the same correct answer twice does not increase the score.</p>
+    </div>
+
+    <div id="result" class="quiz-card result">
+      <h3 id="scoreText"></h3>
+      <p id="scoreMessage"></p>
+      <button id="restartBtn" class="quiz-btn restart">Restart Quiz</button>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="section">
+  <h2 class="section-title">Education</h2>
+  <div class="education">
+    <h3>B.Tech - Computer Science & Engineering</h3>
+    <p>JECRC University, Jaipur</p>
+  </div>
+</section>
+
+<footer>© 2026 Vikas Yadav. All Rights Reserved.</footer>
+
+<script>
+const questions = [
+  {
+    q: "What does a large language model predict?",
+    options: ["The next token", "The next webpage", "The next computer", "The next database"],
+    answer: 0
+  },
+  {
+    q: "What comes before the colon in the course commit format?",
+    options: ["The type, such as feat or fix", "The commit date", "The file name", "The branch name"],
+    answer: 0
+  },
+  {
+    q: "What must a unit test do before the bug is fixed?",
+    options: ["Fail", "Always pass", "Be deleted", "Be skipped"],
+    answer: 0
+  },
+  {
+    q: "Where should webpage styling live?",
+    options: ["In a separate CSS file", "Inside the database", "Only in JavaScript", "Inside the image file"],
+    answer: 0
+  },
+  {
+    q: "What does a loop inside another loop usually mean?",
+    options: ["Quadratic time", "Constant time", "Linear time only", "No time complexity"],
+    answer: 0
+  }
+];
+
+let current = 0;
+let answers = Array(questions.length).fill(null);
+
+const progress = document.getElementById("progress");
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const quizCard = document.getElementById("quizCard");
+const result = document.getElementById("result");
+const scoreText = document.getElementById("scoreText");
+const scoreMessage = document.getElementById("scoreMessage");
+const restartBtn = document.getElementById("restartBtn");
+
+function renderQuestion() {
+  const item = questions[current];
+  progress.textContent = `Question ${current + 1} of ${questions.length}`;
+  question.textContent = item.q;
+  options.innerHTML = "";
+
+  item.options.forEach((text, index) => {
+    const button = document.createElement("button");
+    button.className = "option";
+    button.textContent = `${String.fromCharCode(65 + index)}. ${text}`;
+
+    if (answers[current] === index) {
+      button.classList.add("selected");
+    }
+
+    button.addEventListener("click", () => {
+      answers[current] = index;
+      renderQuestion();
+    });
+
+    options.appendChild(button);
+  });
+
+  prevBtn.disabled = current === 0;
+  nextBtn.textContent = current === questions.length - 1 ? "Finish Quiz" : "Next";
+}
+
+function finishQuiz() {
+  if (answers.some(a => a === null)) {
+    alert("Please answer all five questions before finishing the quiz.");
+    return;
+  }
+
+  let score = 0;
+  answers.forEach((answer, index) => {
+    if (answer === questions[index].answer) score++;
+  });
+
+  quizCard.style.display = "none";
+  result.style.display = "block";
+  scoreText.textContent = `${score} out of ${questions.length}`;
+  scoreMessage.textContent =
+    score === 5 ? "Excellent! You answered all five correctly." :
+    score >= 3 ? "Good job! Keep practicing to improve your score." :
+    "Keep learning and try the quiz again.";
+}
+
+nextBtn.addEventListener("click", () => {
+  if (answers[current] === null) {
+    alert("Please select an answer first.");
+    return;
+  }
+
+  if (current === questions.length - 1) {
+    finishQuiz();
+  } else {
+    current++;
+    renderQuestion();
+  }
+});
+
+prevBtn.addEventListener("click", () => {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+  }
+});
+
+restartBtn.addEventListener("click", () => {
+  current = 0;
+  answers = Array(questions.length).fill(null);
+  result.style.display = "none";
+  quizCard.style.display = "block";
+  renderQuestion();
+  window.scrollTo({top: document.getElementById("quiz").offsetTop - 80, behavior: "smooth"});
+});
+
+document.getElementById("themeToggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+  const dark = document.body.classList.contains("dark-mode");
+  document.getElementById("themeToggle").textContent = dark ? "☀️ Light" : "🌙 Dark";
+  localStorage.setItem("quizProfileTheme", dark ? "dark" : "light");
+});
+
+if (localStorage.getItem("quizProfileTheme") === "dark") {
+  document.body.classList.add("dark-mode");
+  document.getElementById("themeToggle").textContent = "☀️ Light";
+}
+
+renderQuestion();
+</script>
+
+</body>
+</html>
